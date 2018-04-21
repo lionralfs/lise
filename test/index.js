@@ -1,10 +1,22 @@
 const LIse = require('../src/');
 
-const testInstance = new LIse();
-
+let testInstance = new LIse();
 testInstance.encodeSingle('x');
 testInstance.encodeSingle('1');
 if (testInstance.getEncodedString() !== '2nx2o1') {
+  throw new Error('Test failed');
+}
+
+testInstance = new LIse();
+testInstance.encodeSingle('');
+if (testInstance.getEncodedString() !== '1a') {
+  throw new Error('Test failed');
+}
+
+testInstance = new LIse();
+testInstance.encodeSingle('');
+testInstance.encodeSingle('');
+if (testInstance.getEncodedString() !== '1a1a') {
   throw new Error('Test failed');
 }
 
