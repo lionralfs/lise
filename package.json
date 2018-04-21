@@ -1,0 +1,23 @@
+{
+  "name": "lise",
+  "version": "0.0.1",
+  "description": "Length-Indicator based string encoding",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lionralfs/lise.git"
+  },
+  "keywords": [],
+  "author": "Lion Ralfs <lion.ralfs@hotmail.com> (https://github.com/lionralfs)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lionralfs/lise/issues"
+  },
+  "homepage": "https://github.com/lionralfs/lise#readme"
+}
