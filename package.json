@@ -1,6 +1,6 @@
 {
   "name": "lise",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Length-Indicator based string encoding",
   "main": "index.js",
   "directories": {
