@@ -3,7 +3,8 @@ module.exports = {
     try {
       cb();
     } catch (e) {
-      throw new Error(`❌ ${description}\n${e}`);
+      console.log(`❌ ${description}\n${e}`);
+      return process.exit(1);
     }
     return console.log(`✅ ${description}`);
   },

@@ -1,10 +1,86 @@
 class LIse {
   constructor() {
     this.workInProgress = '';
+    this.readPointer = 0;
   }
 
   encodeSingle(str) {
     this.workInProgress += `${this.getLengthIndicatorFor(str)}${str}`;
+  }
+
+  decodeMultiple(limit) {
+    return this.decodeMultipleDel(limit, false);
+  }
+
+  decodeMultipleDel(limit, deleteDecoded) {
+    let res = [];
+    let decSingle = '';
+    while (
+      (limit < 0 || res.length < limit) &&
+      (decSingle = this.decodeSingle(deleteDecoded)) !== null
+    ) {
+      res.push(decSingle);
+    }
+    return res;
+  }
+
+  decodeSingle(deleteDecoded) {
+    let findgoodname = LIse.getStartAndEndIndexOfNextLIString(
+      this.readPointer,
+      this.getEncodedString()
+    );
+    if (findgoodname.length === 2) {
+      let decoded = this.workInProgress.substring(
+        findgoodname[0],
+        findgoodname[1]
+      );
+      if (deleteDecoded) {
+        // TODO: check if this "cutting" of the string actually works
+        this.workInProgress =
+          this.workInProgress.substr(0, this.readPointer) +
+          this.workInProgress.substr(findgoodname[1]);
+      } else {
+        this.readPointer = findgoodname[1];
+      }
+      return decoded;
+    } else {
+      return null;
+    }
+  }
+
+  static getStartAndEndIndexOfNextLIString(startIndex, str) {
+    let i = startIndex;
+
+    if (i + 1 > str.length) {
+      return [];
+    }
+
+    let lengthIndicator = str.substring(i, (i += 1));
+    while (true) {
+      let lengthIndicatorAsInt = LIse.getInt(lengthIndicator, -1);
+      if (
+        lengthIndicatorAsInt === -1 ||
+        i + lengthIndicatorAsInt > str.length
+      ) {
+        return [];
+      }
+      let eitherDataOrIndicator = str.substring(i, i + lengthIndicatorAsInt);
+      let ifitwasAnIndicator = LIse.getInt(eitherDataOrIndicator, -1);
+      if (
+        ifitwasAnIndicator > lengthIndicatorAsInt &&
+        i + ifitwasAnIndicator <= str.length
+      ) {
+        i += lengthIndicatorAsInt;
+        lengthIndicator = eitherDataOrIndicator; // assume to be an indicator
+      } else {
+        return [i + 1, i + lengthIndicatorAsInt]; // i+1 for the pseudo random hash char
+      }
+    }
+  }
+
+  static getInt(str, fallback) {
+    const int = parseInt(str, 10);
+    return isNaN(int) ? fallback : int;
   }
 
   getEncodedString() {
@@ -26,11 +102,11 @@ class LIse {
   }
 
   listToString(list, splitStr) {
-    let res = '';
-    for (let i = 0; i !== list.length; i++) {
-      res += `${list[i]}${i === list.length - 1 ? '' : splitStr}`;
-    }
-    return res;
+    return list.reduce(
+      (acc, curr, i, arr) =>
+        (acc += `${curr}${i === arr.length - 1 ? '' : splitStr}`),
+      ''
+    );
   }
 
   getPseudoRandomHashedCharAsString(str) {
