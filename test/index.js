@@ -1,23 +1,23 @@
 const LIse = require('../src/');
+const { test, expect } = require('./utils');
 
-let testInstance = new LIse();
-testInstance.encodeSingle('x');
-testInstance.encodeSingle('1');
-if (testInstance.getEncodedString() !== '2nx2o1') {
-  throw new Error('Test failed');
-}
+test('2 encodings', () => {
+  const testInstance = new LIse();
+  testInstance.encodeSingle('x');
+  testInstance.encodeSingle('1');
+  expect(testInstance.getEncodedString()).toBe('2nx2o1');
+});
 
-testInstance = new LIse();
-testInstance.encodeSingle('');
-if (testInstance.getEncodedString() !== '1a') {
-  throw new Error('Test failed');
-}
+test('empty string', () => {
+  const testInstance = new LIse();
+  testInstance.encodeSingle('');
+  expect(testInstance.getEncodedString()).toBe('1a');
+});
 
-testInstance = new LIse();
-testInstance.encodeSingle('');
-testInstance.encodeSingle('');
-if (testInstance.getEncodedString() !== '1a1a') {
-  throw new Error('Test failed');
-}
+test('2 empty strings', () => {
+  const testInstance = new LIse();
+  testInstance.encodeSingle('');
+  testInstance.encodeSingle('');
 
-// TODO: add more tests
+  expect(testInstance.getEncodedString()).toBe('1a1a');
+});
