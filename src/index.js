@@ -8,6 +8,10 @@ class LIse {
     this.workInProgress += `${this.getLengthIndicatorFor(str)}${str}`;
   }
 
+  encodeMultiple(strings) {
+    strings.forEach(this.encodeSingle, this);
+  }
+
   decodeMultiple(limit) {
     return this.decodeMultipleDel(limit, false);
   }

@@ -44,3 +44,9 @@ test('It decodes 2 strings', () => {
   expect(res[0]).toBe('asdfasdfawreasdfasrwers');
   expect(res[1]).toBe('dfew');
 });
+
+test('It encodes 2 strings via encodeMultiple', () => {
+  const testInstance = new LIse();
+  testInstance.encodeMultiple(['x', '1']);
+  expect(testInstance.getEncodedString()).toBe('2nx2o1');
+});
