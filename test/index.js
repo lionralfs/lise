@@ -1,4 +1,4 @@
-const LIse = require('../src/');
+const { LIse, AdvancedStringEncoder } = require('../dist/');
 const { test, expect } = require('./utils');
 
 test('It encodes 2 strings', () => {
@@ -49,4 +49,12 @@ test('It encodes 2 strings via encodeMultiple', () => {
   const testInstance = new LIse();
   testInstance.encodeMultiple(['x', '1']);
   expect(testInstance.getEncodedString()).toBe('2nx2o1');
+});
+
+test('It works with an AdvancedStringEncoder', () => {
+  const ase = new AdvancedStringEncoder();
+  ase.addEntry('x', 0);
+  ase.addEntry('y', 0);
+
+  expect(ase.getEncodedString()).toBe('2nx2n02oy2n0');
 });
