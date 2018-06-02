@@ -1,4 +1,4 @@
-import { LIse } from './lise';
+import { LIse } from './LIse';
 
 export class AdvancedStringEncoder {
   constructor() {
