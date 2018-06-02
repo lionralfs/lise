@@ -1,4 +1,4 @@
-const LIse = require('../src/');
+const { LIse } = require('../dist/');
 const { test, expect } = require('./utils');
 
 test('It encodes 2 strings', () => {
