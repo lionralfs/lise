@@ -25,5 +25,8 @@
   "homepage": "https://github.com/lionralfs/lise#readme",
   "devDependencies": {
     "microbundle": "^0.4.4"
-  }
+  },
+  "files": [
+    "dist/"
+  ]
 }
