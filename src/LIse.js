@@ -3,8 +3,8 @@ export class LIse {
    * @param {string} [workInProgress]
    */
   constructor(workInProgress = '') {
-    this.workInProgress = '';
-    this.readPointer = workInProgress;
+    this.workInProgress = workInProgress;
+    this.readPointer = 0;
   }
 
   resetReadPointer() {
