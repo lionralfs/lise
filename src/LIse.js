@@ -1,7 +1,10 @@
 export class LIse {
-  constructor() {
+  /**
+   * @param {string} [workInProgress]
+   */
+  constructor(workInProgress = '') {
     this.workInProgress = '';
-    this.readPointer = 0;
+    this.readPointer = workInProgress;
   }
 
   resetReadPointer() {
