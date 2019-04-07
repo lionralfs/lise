@@ -1,8 +1,11 @@
 import { LIse } from './LIse';
 
 export class AdvancedStringEncoder {
-  constructor() {
-    this.lise = new LIse();
+  /**
+   * @param {string} [workInProgress]
+   */
+  constructor(workInProgress = '') {
+    this.lise = new LIse(workInProgress);
   }
 
   getEncodedString() {
