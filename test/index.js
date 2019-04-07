@@ -58,3 +58,13 @@ test('It works with an AdvancedStringEncoder', () => {
 
   expect(ase.getEncodedString()).toBe('2nx2n02oy2n0');
 });
+
+test('AdvancedStringEncoder allows setting/getting tags', () => {
+  const ase = new AdvancedStringEncoder();
+
+  ase.addEntry('my-tag', 'teststring');
+  ase.addEntry('another-tag', 'something-else');
+
+  expect(ase.getEntry('another-tag')).toBe('something-else');
+  expect(ase.getEntry('my-tag')).toBe('teststring');
+})
