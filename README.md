@@ -1,6 +1,6 @@
 # lise
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/lionralfs/lise.svg)](https://greenkeeper.io/)
+
 
 > Length-Indicator based string encoding
 
