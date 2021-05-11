@@ -1,6 +1,6 @@
 {
   "name": "lise",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Length-Indicator based string encoding",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
